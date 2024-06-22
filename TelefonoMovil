@@ -1,0 +1,85 @@
+package ejercicio_2;
+
+//Importamos la librería del scanner 
+import java.util.Scanner;
+
+public class TelefonoMovil extends Producto {
+	// Declaramos los atributos privados
+	private String modelo;
+	private String marca;
+	private int memoria;
+	private double precio;
+	private double descuento;
+
+	// Creamos constructores para los atributos por parámetro
+
+	protected TelefonoMovil(String nombre, String modelo, String marca, int memoria, double precio, double descuento) {
+		super(precio, nombre);
+		this.modelo = modelo;
+		this.marca = marca;
+		this.memoria = memoria;
+		this.precio = precio;
+		this.descuento = descuento;
+	}
+
+	// Creamos getters y setters para los atributos
+
+	protected String getModelo() {
+		return modelo;
+	}
+
+	protected void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	protected String getMarca() {
+		return marca;
+	}
+
+	protected void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	protected int getMemoria() {
+		return memoria;
+	}
+
+	protected void setMemoria(int memoria) {
+		this.memoria = memoria;
+	}
+
+	protected double getDescuento() {
+		return descuento;
+	}
+
+	protected void setDescuento(double descuento) {
+		this.descuento = descuento;
+	}
+
+	// Método toString para imprimir los atributos del objeto
+
+	@Override
+	public String toString() {
+		return "TelefonoMovil [nombre = " + nombre + ", modelo = " + modelo + ", marca = " + marca + ", memoria = "
+				+ memoria + ", precio=" + precio + ", descuento=" + descuento + "]";
+	}
+
+	// Método equals para comparar si dos objetos TelefonoMovil son iguales
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		TelefonoMovil other = (TelefonoMovil) obj;
+		return memoria == other.memoria && Double.compare(other.precio, precio) == 0
+				&& Double.compare(other.descuento, descuento) == 0 && Object.equals(modelo, other.modelo)
+				&& Object.equals(marca, other.marca);
+	}
+
+	// Método para calcular el precio final del móvil restando el descuento
+	public double calcularPrecioFinal() {
+		return getPrecio() - descuento;
+
+	}
+}
