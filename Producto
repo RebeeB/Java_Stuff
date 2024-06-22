@@ -1,0 +1,38 @@
+package ejercicio_2;
+
+public abstract class Producto {
+	// Declaramos los atributos
+	private double precio;
+
+	protected String nombre;
+
+	// Constructores
+	public Producto(double precio, String nombre) {
+		this.precio = precio;
+		this.nombre = nombre;
+
+	}
+
+	// Método getter para el atributo nombre
+	protected String getNombre() {
+		return nombre;
+	}
+
+	// Método abstracto para calcular el precio final del producto
+	public abstract double calcularPrecioFinal();
+
+	// Método getter y setter para el atributo precio
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	// Metodo tostring
+	@Override
+	public String toString() {
+		return "Producto [precio=" + precio + ", nombre=" + nombre + "]";
+	}
+}
