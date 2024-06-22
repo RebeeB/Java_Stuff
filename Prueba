@@ -1,0 +1,20 @@
+package ejercicio_2;
+
+import java.util.ArrayList;
+
+public class Prueba {
+	public static void main(String[] args) {
+		// Creamos un ArrayList de tipo Producto
+		ArrayList<Producto> productos = new ArrayList<>();
+
+		// Ejemplo de producto móvil
+		productos.add(new TelefonoMovil("iPhone", "12", "Apple", 128, 1000, 100));
+		productos.add(new Tablet("Ipad", "10", "Apple", 128, 1000, 100));
+		// Recorremos el ArrayList y mostramos los datos de cada producto y su precio
+		// final
+		for (Producto producto : productos) {
+			System.out.println(producto);
+
+		}
+	}
+}
