@@ -1,0 +1,69 @@
+package ejercicio_2;
+
+public class Tablet extends Producto {
+	// Atributos
+	private String modelo;
+	private String marca;
+	private int memoria;
+	private double descuento;
+
+	// Constructor
+	public Tablet(String nombre, String modelo, String marca, int memoria, double precio, double descuento) {
+		super(precio, nombre);
+		this.modelo = modelo;
+		this.marca = marca;
+		this.memoria = memoria;
+		this.descuento = descuento;
+
+	}
+
+	protected String getModelo() {
+		return modelo;
+	}
+
+	protected void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	protected String getMarca() {
+		return marca;
+	}
+
+	protected void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	protected int getMemoria() {
+		return memoria;
+	}
+
+	protected void setMemoria(int memoria) {
+		this.memoria = memoria;
+	}
+
+	protected double getDescuento() {
+		return descuento;
+	}
+
+	protected void setDescuento(double descuento) {
+		this.descuento = descuento;
+	}
+
+	// Método para calcular el precio final de la Tablet restando el descuento
+	public double calcularPrecioFinal() {
+		return getPrecio() - descuento;
+	}
+
+	// Método getNombre() para Tablet
+	public String getNombre() {
+		return super.getNombre();
+
+	}
+
+	@Override
+	public String toString() {
+		return "Tablet [nombre = " + nombre + ", modelo=" + modelo + ", marca=" + marca + ", memoria=" + memoria
+				+ ", descuento=" + descuento + "]";
+	}
+
+}
