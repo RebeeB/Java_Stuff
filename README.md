@@ -2,6 +2,9 @@
 JAVA
 
 ENUNCIADO
+
+
+
 Creamos una clase Producto que tendrá como atributo el precio, un constructor que recibe dichos atributos como parámetro y los getters y setters de dicho atributo. 
 La clase Tablet con los mismos atributos y métodos que la clase móvil. Tanto la clase Tablet como la clase TelefonoMovil tienen que heredar de la clase Producto. 
 Hacemos la clase producto abstracta. 
