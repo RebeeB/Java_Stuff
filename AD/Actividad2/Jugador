@@ -1,0 +1,47 @@
+package model;
+
+import jakarta.persistence.*;
+
+@Entity (name = "jugadores")
+
+public class Jugador {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "posición")
+    private String posicion;
+
+    @Column(name = "valor_mercado")
+    private Double valorMercado;
+
+    @Column(name = "goles")
+    private int goles;
+
+    @Column(name = "nacionalidad")
+    private String nacionalidad;
+
+    @ManyToOne
+    @JoinColumn(name = "id_equipo", nullable = false)
+    private Equipo equipo;
+
+    public void setNombre(String nombre) {
+    }
+
+    public void setApellido(String apellido) {
+    }
+
+    public void setEdad(int edad) {
+    }
+
+    public void setPosicion(String posicion) {
+    }
+
+    public void setEquipo(Equipo equipo) {
+    }
+
+
+}
