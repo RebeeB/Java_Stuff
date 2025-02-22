@@ -1,0 +1,44 @@
+package model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
+@Entity
+@Table(name = "ligas")
+public class Liga implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name = "nombre_liga", nullable = false)
+    private String nombreLiga;
+
+    @Column(name = "fecha_inicio")
+    private String fechaInicio;
+
+    @Column(name = "fecha_fin")
+    private String fechaFin;
+
+    @OneToMany(mappedBy = "liga", cascade = CascadeType.ALL)
+    private List<Equipo> equipos;
+
+    public Liga(String nombreLiga, String fechaInicio, String fechaFin, List<Equipo> equipos) {
+        this.nombreLiga = nombreLiga;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.equipos = equipos;
+    }
+
+}
