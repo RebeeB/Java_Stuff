@@ -1,0 +1,50 @@
+package model;
+
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity (name = "equipos")
+
+public class Equipo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "nombre_equipo", nullable = false)
+    private String nombreEquipo;
+
+    @Column(name = "ciudad")
+    private String ciudad;
+
+    @ManyToOne
+    @JoinColumn(name = "id_liga", nullable = false)
+    private Liga liga;
+
+    @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
+    private List<Jugador> jugadores;
+
+    @OneToOne(mappedBy = "equipo", cascade = CascadeType.ALL)
+    private Entrenador entrenador;
+
+    public Equipo(Entrenador entrenador, List<Jugador> jugadores, Liga liga, String ciudad, String nombreEquipo) {
+        this.entrenador = entrenador;
+        this.jugadores = jugadores;
+        this.liga = liga;
+        this.ciudad = ciudad;
+        this.nombreEquipo = nombreEquipo;
+    }
+
+    public Equipo() {
+        
+    }
+
+    public void setNombre(String nombre) {
+    }
+
+    public void setCiudad(String ciudad) {
+    }
+
+    public void setLiga(Liga liga) {
+    }
+}
