@@ -1,0 +1,50 @@
+package com.ejemplo.medicamentos.controller;
+
+import com.ejemplo.medicamentos.model.Medicamento;
+import com.ejemplo.medicamentos.service.MedicamentoService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/medicamentos")
+public class MedicamentoController {
+
+    private final MedicamentoService servicio;
+
+    public MedicamentoController(MedicamentoService servicio) {
+        this.servicio = servicio;
+    }
+
+    @GetMapping
+    public List<Medicamento> listar() {
+        return servicio.listar();
+    }
+
+    @GetMapping("/info")
+    public String conexionCorrecta() {
+        return "Conexión realizada correctamente";
+    }
+
+    @GetMapping("/{id}")
+    public Medicamento obtener(@PathVariable Long id) {
+        return servicio.obtener(id)
+                .orElseThrow(() -> new RuntimeException("Medicamento no encontrado"));
+    }
+
+    @PostMapping
+    public Medicamento crear(@RequestBody Medicamento medicamento) {
+        return servicio.crear(medicamento);
+    }
+
+    @PutMapping("/{id}")
+    public Medicamento actualizar(@PathVariable Long id, @RequestBody Medicamento nuevo) {
+        return servicio.actualizar(id, nuevo);
+    }
+
+    @DeleteMapping("/{id}")
+    public String eliminar(@PathVariable Long id) {
+        servicio.eliminar(id);
+        return "Se ha eliminado el medicamento.";
+    }
+}
